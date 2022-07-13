@@ -1,0 +1,21 @@
+---
+- hosts: localhost
+  connection: local
+  vars:
+    ansible_python_interpreter: python3
+  environment:
+    #PYSNOOPER_DISABLED: 1
+  
+  tasks:
+
+    - name: hello
+      debug:
+        msg: hello world
+
+    - name: create a db
+      mssql_db_demo:
+        name: testdb1
+        login_user: sa
+        login_password: "{{ sapw }}"
+        login_host: localhost
+        state: absent
