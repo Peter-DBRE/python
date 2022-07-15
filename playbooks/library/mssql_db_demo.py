@@ -18,6 +18,8 @@ RETURN = '''
 import os
 import sys
 import pysnooper
+import datetime
+from io import StringIO
 
 try:
     import pyodbc
@@ -51,7 +53,12 @@ except ImportError as e:
 else:
     msdb_imp_fail = False
 
-@pysnooper.snoop(output='/tmp/snoop/mssql_db.txt')
+#setup pysnooper
+sys.stderr = redirected_stderr = StringIO()
+if not os.environ.get('MODULE_DEBUGGING'):
+    os.environ["PYSNOOPER_DISABLED"] = "1"
+
+@pysnooper.snoop(depth=2)
 def main():
     module = AnsibleModule(
         argument_spec=dict(
@@ -94,27 +101,28 @@ def main():
             try:
                 db.db_delete(cnxn, cursor, db_name, auto_commit)
             except Exception as e:
-                module.fail_json(msg="error deleting: "+str(e))
+                utils.module_fail(module=module, msg="error deleting: "+str(e), debug=redirected_stderr.getvalue(), secrets=[login_password, login_user])
             else:
                 if db.db_exists(cnxn, cursor, db_name):
-                    module.fail_json(msg="error dropping db")
+                    utils.module_fail(module=module, msg="error dropping db", debug=redirected_stderr.getvalue(), secrets=[login_password, login_user])
                 else:
-                    module.exit_json(changed=True, msg='db dropped')
+                    utils.module_exit(module=module, msg='db dropped', changed=True, debug=redirected_stderr.getvalue(), secrets=[login_password, login_user])
         elif state == 'present':
-            module.exit_json(changed=False, msg='database exists')
+            utils.module_exit(module=module, msg='db exists', changed=False, debug=redirected_stderr.getvalue(), secrets=[login_password, login_user])
     else:
         if state == 'present':
             try:
                 db.db_create(cnxn, cursor, db_name, auto_commit)
             except Exception as e:
-                module.fail_json(msg="error creating database: "+str(e))
+                utils.module_fail(module=module, msg="error creating database: "+str(e), debug=redirected_stderr.getvalue(), secrets=[login_password, login_user])
             else:
                 if db.db_exists(cnxn, cursor, db_name):
-                    module.exit_json(changed=True, msg='db created')
+                    utils.module_exit(module=module, msg='db created', changed=True, debug=redirected_stderr.getvalue(), secrets=[login_password, login_user])
                 else:
-                    module.fail_json(msg="error creating db")
+                    utils.module_fail(module=module, msg="error creating db", debug=redirected_stderr.getvalue(), secrets=[login_password, login_user])
+                    
         elif state == 'absent':
-            module.exit_json(changed=False, msg='database doesnt exit')
+            utils.module_exit(module=module, msg='db doesnt exist', changed=False, debug=redirected_stderr.getvalue(), secrets=[login_password, login_user])
 
 if __name__ == '__main__':
     main()

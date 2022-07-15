@@ -4,7 +4,8 @@
   vars:
     ansible_python_interpreter: python3
   environment:
-    #PYSNOOPER_DISABLED: 1
+    ANSIBLE_STDOUT_CALLBACK: yaml
+    MODULE_DEBUGGING: 1
   
   tasks:
 
@@ -18,4 +19,4 @@
         login_user: sa
         login_password: "{{ sapw }}"
         login_host: localhost
-        state: absent
+        state: present
