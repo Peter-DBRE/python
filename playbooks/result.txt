@@ -1,0 +1,186 @@
+TASK [create a db] *****************************************************************************************************************************************************************************************
+task path: /Users/peterblackburn/Documents/GIT/python/playbooks/create_db.yaml:16
+<127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: peterblackburn
+<127.0.0.1> EXEC /bin/sh -c 'echo ~peterblackburn && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /Users/peterblackburn/.ansible/tmp `"&& mkdir "` echo /Users/peterblackburn/.ansible/tmp/ansible-tmp-1658820911.254716-94422-253308538187899 `" && echo ansible-tmp-1658820911.254716-94422-253308538187899="` echo /Users/peterblackburn/.ansible/tmp/ansible-tmp-1658820911.254716-94422-253308538187899 `" ) && sleep 0'
+Using module file /Users/peterblackburn/Documents/GIT/python/playbooks/library/mssql_db_demo.py
+<127.0.0.1> PUT /Users/peterblackburn/.ansible/tmp/ansible-local-943801vsl9y9e/tmp9vvnzgar TO /Users/peterblackburn/.ansible/tmp/ansible-tmp-1658820911.254716-94422-253308538187899/AnsiballZ_mssql_db_demo.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /Users/peterblackburn/.ansible/tmp/ansible-tmp-1658820911.254716-94422-253308538187899/ /Users/peterblackburn/.ansible/tmp/ansible-tmp-1658820911.254716-94422-253308538187899/AnsiballZ_mssql_db_demo.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'ANSIBLE_STDOUT_CALLBACK=yaml MODULE_DEBUGGING=1 python3 /Users/peterblackburn/.ansible/tmp/ansible-tmp-1658820911.254716-94422-253308538187899/AnsiballZ_mssql_db_demo.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /Users/peterblackburn/.ansible/tmp/ansible-tmp-1658820911.254716-94422-253308538187899/ > /dev/null 2>&1 && sleep 0'
+ok: [localhost] => changed=false 
+  debug: |-
+    [33m[2mSource path:... [22m/var/folders/rz/d0nt3jmd0ms0rqwfg951sx340000gp/T/ansible_mssql_db_demo_payload_k43ruul7/ansible_mssql_db_demo_payload.zip/ansible/modules/mssql_db_demo.py[0m
+    [2m08:35:11.617303 call        62[0m def main():
+    [2m08:35:11.618429 line        63[0m     module = AnsibleModule(
+    [2m08:35:11.618467 line        64[0m         argument_spec=dict(
+    [2m08:35:11.618495 line        65[0m             name=dict(required=True, aliases=['db_name']),
+    [2m08:35:11.618522 line        66[0m             login_user=dict(default=''),
+    [2m08:35:11.618548 line        67[0m             login_password=dict(default='', no_log=True),
+    [2m08:35:11.618573 line        68[0m             login_host=dict(required=True),
+    [2m08:35:11.618597 line        69[0m             login_port=dict(default='1433'),
+    [2m08:35:11.618621 line        70[0m             auto_commit=dict(type='bool', default=False),
+    [2m08:35:11.618646 line        71[0m             state=dict(
+    [2m08:35:11.618670 line        72[0m                 default='present', choices=['present', 'absent'])
+    [2m08:35:11.618694 line        71[0m             state=dict(
+    [2m08:35:11.618718 line        64[0m         argument_spec=dict(
+    [2m08:35:11.618743 line        63[0m     module = AnsibleModule(
+    [33m[2m    Source path:... [22m/var/folders/rz/d0nt3jmd0ms0rqwfg951sx340000gp/T/ansible_mssql_db_demo_payload_k43ruul7/ansible_mssql_db_demo_payload.zip/ansible/module_utils/basic.py[0m
+        [32m[2mStarting var:.. [22mself = <ansible.module_utils.basic.AnsibleModule object at 0x107ea27f0>[0m
+        [32m[2mStarting var:.. [22margument_spec = {'name': {'required': True, 'aliases': ['db_name...t': 'present', 'choices': ['present', 'absent']}}[0m
+        [32m[2mStarting var:.. [22mbypass_checks = False[0m
+        [32m[2mStarting var:.. [22mno_log = False[0m
+        [32m[2mStarting var:.. [22mmutually_exclusive = None[0m
+        [32m[2mStarting var:.. [22mrequired_together = None[0m
+        [32m[2mStarting var:.. [22mrequired_one_of = None[0m
+        [32m[2mStarting var:.. [22madd_file_common_args = False[0m
+        [32m[2mStarting var:.. [22msupports_check_mode = False[0m
+        [32m[2mStarting var:.. [22mrequired_if = None[0m
+        [32m[2mStarting var:.. [22mrequired_by = None[0m
+        [2m08:35:11.618782 call       436[0m     def __init__(self, argument_spec, bypass_checks=False, no_log=False,
+        [2m08:35:11.619573 line       449[0m         self._name = os.path.basename(__file__)  # initialize name until we can parse from options
+        [2m08:35:11.619660 line       450[0m         self.argument_spec = argument_spec
+        [2m08:35:11.619727 line       451[0m         self.supports_check_mode = supports_check_mode
+        [2m08:35:11.619790 line       452[0m         self.check_mode = False
+        [2m08:35:11.619850 line       453[0m         self.bypass_checks = bypass_checks
+        [2m08:35:11.619910 line       454[0m         self.no_log = no_log
+        [2m08:35:11.619969 line       456[0m         self.mutually_exclusive = mutually_exclusive
+        [2m08:35:11.620028 line       457[0m         self.required_together = required_together
+        [2m08:35:11.620087 line       458[0m         self.required_one_of = required_one_of
+        [2m08:35:11.620146 line       459[0m         self.required_if = required_if
+        [2m08:35:11.620204 line       460[0m         self.required_by = required_by
+        [2m08:35:11.620263 line       461[0m         self.cleanup_files = []
+        [2m08:35:11.620322 line       462[0m         self._debug = False
+        [2m08:35:11.620380 line       463[0m         self._diff = False
+        [2m08:35:11.620438 line       464[0m         self._socket_path = None
+        [2m08:35:11.620496 line       465[0m         self._shell = None
+        [2m08:35:11.620567 line       466[0m         self._syslog_facility = 'LOG_USER'
+        [2m08:35:11.620623 line       467[0m         self._verbosity = 0
+        [2m08:35:11.620677 line       470[0m         self.run_command_environ_update = {}
+        [2m08:35:11.620732 line       471[0m         self._clean = {}
+        [2m08:35:11.620787 line       472[0m         self._string_conversion_action = ''
+        [2m08:35:11.620842 line       474[0m         self.aliases = {}
+        [2m08:35:11.620898 line       475[0m         self._legal_inputs = []
+        [2m08:35:11.620954 line       476[0m         self._options_context = list()
+        [2m08:35:11.621010 line       477[0m         self._tmpdir = None
+        [2m08:35:11.621065 line       479[0m         if add_file_common_args:
+        [2m08:35:11.621120 line       485[0m         self.no_log_values = set()
+        [2m08:35:11.621175 line       489[0m         self._check_locale()
+        [2m08:35:11.621550 line       491[0m         self._load_params()
+        [2m08:35:11.621691 line       492[0m         self._set_internal_properties()
+        [2m08:35:11.621821 line       494[0m         self.validator = ModuleArgumentSpecValidator(self.argument_spec,
+        [2m08:35:11.621886 line       495[0m                                                      self.mutually_exclusive,
+        [2m08:35:11.621956 line       496[0m                                                      self.required_together,
+        [2m08:35:11.622047 line       497[0m                                                      self.required_one_of,
+        [2m08:35:11.622126 line       498[0m                                                      self.required_if,
+        [2m08:35:11.622183 line       499[0m                                                      self.required_by,
+        [2m08:35:11.622238 line       494[0m         self.validator = ModuleArgumentSpecValidator(self.argument_spec,
+        [2m08:35:11.622322 line       502[0m         self.validation_result = self.validator.validate(self.params)
+        [2m08:35:11.622752 line       503[0m         self.params.update(self.validation_result.validated_parameters)
+        [2m08:35:11.622832 line       504[0m         self.no_log_values.update(self.validation_result._no_log_values)
+        [2m08:35:11.622895 line       505[0m         self.aliases.update(self.validation_result._aliases)
+        [2m08:35:11.622953 line       507[0m         try:
+        [2m08:35:11.623008 line       508[0m             error = self.validation_result.errors[0]
+        [2m08:35:11.623067 exception  508[0m             error = self.validation_result.errors[0]
+        [31mException:..... [1mIndexError: list index out of range[0m
+        [2m08:35:11.623161 line       509[0m         except IndexError:
+        [2m08:35:11.623235 line       510[0m             error = None
+        [32m[2mNew var:....... [22merror = None[0m
+        [2m08:35:11.623302 line       513[0m         if error:
+        [2m08:35:11.623365 line       520[0m         if self.check_mode and not self.supports_check_mode:
+        [2m08:35:11.623420 line       524[0m         self._CHECK_ARGUMENT_TYPES_DISPATCHER = DEFAULT_TYPE_VALIDATORS
+        [2m08:35:11.623477 line       526[0m         if not self.no_log:
+        [2m08:35:11.623532 line       527[0m             self._log_invocation()
+        [2m08:35:11.625220 line       530[0m         self._selinux_enabled = None
+        [2m08:35:11.625310 line       531[0m         self._selinux_mls_enabled = None
+        [2m08:35:11.625378 line       532[0m         self._selinux_initial_context = None
+        [2m08:35:11.625439 line       535[0m         self._set_cwd()
+        [2m08:35:11.625568 return     535[0m         self._set_cwd()
+        [36m[2mReturn value:.. [22mNone[0m
+    [33m[2mSource path:... [22m/var/folders/rz/d0nt3jmd0ms0rqwfg951sx340000gp/T/ansible_mssql_db_demo_payload_k43ruul7/ansible_mssql_db_demo_payload.zip/ansible/modules/mssql_db_demo.py[0m
+    [32m[2mNew var:....... [22mmodule = <ansible.module_utils.basic.AnsibleModule object at 0x107ea27f0>[0m
+    [2m08:35:11.625646 line        76[0m     db_name = module.params['name']
+    [32m[2mNew var:....... [22mdb_name = 'testdb1'[0m
+    [2m08:35:11.625691 line        77[0m     state = module.params['state']
+    [32m[2mNew var:....... [22mstate = 'present'[0m
+    [2m08:35:11.625727 line        78[0m     auto_commit = module.params['auto_commit']
+    [32m[2mNew var:....... [22mauto_commit = False[0m
+    [2m08:35:11.625761 line        79[0m     login_user = module.params['login_user']
+    [32m[2mNew var:....... [22mlogin_user = '****************'[0m
+    [2m08:35:11.625797 line        80[0m     login_password = module.params['login_password']
+    [32m[2mNew var:....... [22mlogin_password = '****************'[0m
+    [2m08:35:11.625843 line        81[0m     login_host = module.params['login_host']
+    [32m[2mNew var:....... [22mlogin_host = 'localhost'[0m
+    [2m08:35:11.625882 line        82[0m     login_port = module.params['login_port']
+    [32m[2mNew var:....... [22mlogin_port = '1433'[0m
+    [2m08:35:11.625923 line        84[0m     cnxn = utils.connect(login_host, login_port, login_user, login_password, auto_commit, True, 'master')
+    [33m[2m    Source path:... [22m/var/folders/rz/d0nt3jmd0ms0rqwfg951sx340000gp/T/ansible_mssql_db_demo_payload_k43ruul7/ansible_mssql_db_demo_payload.zip/ansible/module_utils/mssql_utils/utils.py[0m
+        [32m[2mStarting var:.. [22mlogin_host = 'localhost'[0m
+        [32m[2mStarting var:.. [22mlogin_port = '1433'[0m
+        [32m[2mStarting var:.. [22mlogin_user = '****************'[0m
+        [32m[2mStarting var:.. [22mlogin_password = '****************'[0m
+        [32m[2mStarting var:.. [22mauto_commit = False[0m
+        [32m[2mStarting var:.. [22mtrust_cert = True[0m
+        [32m[2mStarting var:.. [22mdatabase = 'master'[0m
+        [2m08:35:11.625979 call         6[0m def connect(login_host, login_port, login_user, login_password, auto_commit, trust_cert=True, database='master'):
+        [2m08:35:11.626176 line         7[0m     import sys
+        [32m[2mNew var:....... [22msys = <module 'sys' (built-in)>[0m
+        [2m08:35:11.626222 line         8[0m     import pyodbc
+        [32m[2mNew var:....... [22mpyodbc = <module 'pyodbc' from '/Users/peterblackburn/Lib...ython/site-packages/pyodbc.cpython-38-darwin.so'>[0m
+        [2m08:35:11.626275 line        10[0m     boolyn = ('no','yes')
+        [32m[2mNew var:....... [22mboolyn = ('no', 'yes')[0m
+        [2m08:35:11.626332 line        12[0m     login_string = login_host
+        [32m[2mNew var:....... [22mlogin_string = 'localhost'[0m
+        [2m08:35:11.626388 line        14[0m     if login_port != "1433":
+        [2m08:35:11.626451 line        17[0m     try:
+        [2m08:35:11.626504 line        18[0m         cnxn = pyodbc.connect('DRIVER={ODBC Driver 18 for SQL Server};SERVER='+login_string+';DATABASE='+database+';UID='+login_user+';PWD='+login_password+';TrustServerCertificate='+boolyn[trust_cert], autocommit=auto_commit)
+        [32m[2mNew var:....... [22mcnxn = <pyodbc.Connection object at 0x107d26ab0>[0m
+        [2m08:35:11.776864 line        22[0m     return cnxn
+        [2m08:35:11.777024 return      22[0m     return cnxn
+        [36m[2mReturn value:.. [22m<pyodbc.Connection object at 0x107d26ab0>[0m
+    [33m[2mSource path:... [22m/var/folders/rz/d0nt3jmd0ms0rqwfg951sx340000gp/T/ansible_mssql_db_demo_payload_k43ruul7/ansible_mssql_db_demo_payload.zip/ansible/modules/mssql_db_demo.py[0m
+    [32m[2mNew var:....... [22mcnxn = <pyodbc.Connection object at 0x107d26ab0>[0m
+    [2m08:35:11.777109 line        85[0m     cursor = cnxn.cursor()
+    [32m[2mNew var:....... [22mcursor = <pyodbc.Cursor object at 0x107d75930>[0m
+    [2m08:35:11.777197 line        87[0m     if py_imp_fail:
+    [2m08:35:11.777255 line        90[0m     if ans_imp_fail:
+    [2m08:35:11.777301 line        93[0m     if msutils_imp_fail:
+    [2m08:35:11.777344 line        96[0m     if msdb_imp_fail:
+    [2m08:35:11.777387 line        99[0m     if db.db_exists(cnxn, cursor, db_name):
+    [33m[2m    Source path:... [22m/var/folders/rz/d0nt3jmd0ms0rqwfg951sx340000gp/T/ansible_mssql_db_demo_payload_k43ruul7/ansible_mssql_db_demo_payload.zip/ansible/module_utils/mssql_utils/db.py[0m
+        [32m[2mStarting var:.. [22mcnxn = <pyodbc.Connection object at 0x107d26ab0>[0m
+        [32m[2mStarting var:.. [22mcursor = <pyodbc.Cursor object at 0x107d75930>[0m
+        [32m[2mStarting var:.. [22mdb_name = 'testdb1'[0m
+        [2m08:35:11.777435 call         6[0m def db_exists(cnxn, cursor, db_name):
+        [2m08:35:11.777700 line         7[0m     try:
+        [2m08:35:11.777738 line         8[0m         cursor.execute("SELECT 1 FROM master.sys.databases WHERE name = '{db_name}'".format(db_name=db_name))
+        [2m08:35:11.968802 line        13[0m         try:
+        [2m08:35:11.968924 line        14[0m             return_value=cursor.fetchval()
+        [32m[2mNew var:....... [22mreturn_value = 1[0m
+        [2m08:35:11.968989 line        17[0m         return_mes****************ges=cursor.mes****************ges
+        [32m[2mNew var:....... [22mreturn_mes****************ges = [][0m
+        [2m08:35:11.969064 line        18[0m         cnxn.commit()
+        [2m08:35:11.971840 line        19[0m     return bool(return_value)#, return_mes****************ges
+        [2m08:35:11.971943 return      19[0m     return bool(return_value)#, return_mes****************ges
+        [36m[2mReturn value:.. [22mTrue[0m
+    [33m[2mSource path:... [22m/var/folders/rz/d0nt3jmd0ms0rqwfg951sx340000gp/T/ansible_mssql_db_demo_payload_k43ruul7/ansible_mssql_db_demo_payload.zip/ansible/modules/mssql_db_demo.py[0m
+    [2m08:35:11.972030 line       100[0m         if state == 'absent':
+    [2m08:35:11.972101 line       110[0m         elif state == 'present':
+    [2m08:35:11.972147 line       111[0m             utils.module_exit(module=module, msg='db exists', changed=False, debug=redirected_stderr.getvalue(), secrets=[login_password, login_user])
+  invocation:
+    module_args:
+      auto_commit: false
+      login_host: localhost
+      login_password: VALUE_SPECIFIED_IN_NO_LOG_PARAMETER
+      login_port: '1433'
+      login_user: sa
+      name: testdb1
+      state: present
+  msg: db exists
+META: ran handlers
+META: ran handlers
+
+PLAY RECAP *************************************************************************************************************************************************************************************************
+localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+peterblackburn@Cultures-MacBook-Pro playbooks % 
